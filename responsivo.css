@@ -63,6 +63,7 @@
     .portifolio{
         padding: 10px;
     }
+    
     .portifolio-layer{
         visibility: hidden;
     }
@@ -112,6 +113,10 @@
     .services-box{
         width: 60%;
         margin-bottom: 2rem;
+    }
+
+    .portifolio-layer{
+        visibility: visible;
     }
 
     .portifolio-container{
