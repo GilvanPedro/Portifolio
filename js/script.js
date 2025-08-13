@@ -27,7 +27,7 @@ function downloadWord() {
     const blob = new Blob(['\ufeff' + content], { type: 'application/msword' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'curriculo.docx';
+    link.download = 'Currículo.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
