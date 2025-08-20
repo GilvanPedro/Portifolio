@@ -68,7 +68,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 0 10%;
     position: relative;
 }
