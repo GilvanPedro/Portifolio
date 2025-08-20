@@ -39,7 +39,7 @@ Portfolio/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/GilvanPedro/Portifolio
+   git clone [URL_DO_SEU_REPOSITORIO]
    ```
 
 2. Navegue até a pasta do projeto:
@@ -61,6 +61,4 @@ Este projeto está sob a licença [MIT](LICENSE).
 
 ---
 
-Desenvolvido com ❤️ por Gilvan
-
-
+Desenvolvido com ❤️ por [Seu Nome]

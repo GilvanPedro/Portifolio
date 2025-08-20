@@ -16,9 +16,9 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 
-const texts = ["Hi! Welcome to my portifolio 🥰", 
+const texts = ["Hi! Welcome to my portifolio ", 
                 "I'm Gilvan Pedro", 
-                "This is my site! 😎"];
+                "This is my site! "];
 let count = 0;
 let index = 0;
 let currentText = "";
@@ -59,3 +59,58 @@ function type() {
 
 type();
 
+// Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking on a nav link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Close menu when clicking outside
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-menu') && !e.target.closest('.hamburger')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(element => {
+    observer.observe(element);
+});

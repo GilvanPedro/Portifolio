@@ -317,7 +317,7 @@ p {
     color: var(--txt-color-01);
 }
 
-.contact h2{
+.contact h2 {
     color: var(--txt-color-01);
 }
 
@@ -428,10 +428,10 @@ p {
     outline: none;
 }
 
-.form-group input:focus + label,
-.form-group textarea:focus + label,
-.form-group input:valid + label,
-.form-group textarea:valid + label {
+.form-group input:focus+label,
+.form-group textarea:focus+label,
+.form-group input:valid+label,
+.form-group textarea:valid+label {
     top: -0.6rem;
     left: 0.8rem;
     font-size: 0.8rem;
@@ -475,13 +475,13 @@ p {
     .contact-container {
         flex-direction: column;
     }
-    
+
     .contact-info {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .info-item {
         flex: 1 1 300px;
     }
@@ -491,7 +491,7 @@ p {
     .contact {
         padding: 3rem 1rem;
     }
-    
+
     .info-item {
         flex: 1 1 100%;
     }
@@ -523,20 +523,4 @@ footer p {
 
 .left {
     transform: translateX(-100px);
-}
-
-@media (max-width: 992px) {
-    .project-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .project-content.reverse {
-        flex-direction: column;
-    }
-
-    .project-text,
-    .project-image {
-        width: 100%;
-    }
 }
