@@ -27,7 +27,11 @@
     }
 
     .about-info img {
-        margin: 0 auto 20px;
+        margin: 20px;
+    }
+
+    .about-info img {
+        max-width: 400px;
     }
 
     .contact-container {
@@ -159,10 +163,12 @@
         width: 100%;
         padding-left: 70px;
         padding-right: 25px;
+        left: 6px;
+
     }
 
     .container::after {
-        left: 15px;
+        left: 1px;
     }
 
     .left-tml::after, 
@@ -171,7 +177,7 @@
     }
 
     .right-tml {
-        left: 0;
+        left: 6px;
     }
 }
 

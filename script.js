@@ -59,7 +59,6 @@ function type() {
 
 type();
 
-// Hamburger Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -68,7 +67,6 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close menu when clicking on a nav link
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -76,7 +74,6 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
-// Close menu when clicking outside
 window.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-menu') && !e.target.closest('.hamburger')) {
         hamburger.classList.remove('active');
@@ -84,7 +81,6 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -98,7 +94,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1
 };

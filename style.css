@@ -68,12 +68,12 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
     padding: 0 10%;
     position: relative;
 }
 
-/* Portfolio Section */
+/* Portfolio */
 .portifolio {
     padding: 80px 10%;
     background-color: var(--bg-color-01);
@@ -263,6 +263,7 @@ p {
     bottom: 0;
     left: 50%;
     margin-left: -2px;
+    border-radius: 5px;
 }
 
 /* Containers */
@@ -470,7 +471,6 @@ p {
     transform: translateX(5px);
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
     .contact-container {
         flex-direction: column;

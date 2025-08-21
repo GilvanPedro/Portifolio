@@ -62,4 +62,3 @@ Este projeto está sob a licença [MIT](LICENSE).
 ---
 
 Desenvolvido com ❤️ por Gilvan Pedro
-
