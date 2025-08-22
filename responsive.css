@@ -42,6 +42,14 @@
         width: 100%;
         margin-top: 30px;
     }
+
+    .contact-icon{
+        padding-left: 30px;
+    }
+
+    .contact-icon a{
+        padding: 5px;
+    }
 }
 
 /* Mobile Styles (up to 767px) */
@@ -179,6 +187,14 @@
     .right-tml {
         left: 6px;
     }
+
+    .contact-icon{
+        padding-left: 0px;
+    }
+
+    .contact-icon a{
+        padding: 0;
+    }
 }
 
 /* Small Mobile Devices (up to 480px) */
@@ -198,5 +214,13 @@
 
     .contact-form .form-group {
         margin-bottom: 20px;
+    }
+
+    .contact-icon{
+        padding-left: 0px;
+    }
+
+    .contact-icon a{
+        padding: 0;
     }
 }
