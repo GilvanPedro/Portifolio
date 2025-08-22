@@ -497,6 +497,26 @@ p {
     }
 }
 
+.contact-icon{
+    display: flex;
+    padding-left: 30px;
+}
+
+.contact-icon a{
+    max-width: 50px;
+    border-radius: 50px;
+    padding: 10px;
+    border: solid 2px var(--bg-color-01);
+    margin: 5px;
+}
+
+.contact-icon a:hover{
+    scale: 1.1;
+    transition: ease 0.3s;
+    color: var(--txt-color-02);
+    border: solid 2px var(--txt-color-02);
+}
+
 footer {
     display: flex;
     flex-direction: row;
