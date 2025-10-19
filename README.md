@@ -33,6 +33,8 @@ Portfolio/
     ├── Projeto2.png
     ├── Projeto3.png
     └── Projeto4.png
+    └── Projeto5.png
+    └── Projeto6.png
 ```
 
 ## 🚀 Como Executar Localmente
@@ -62,3 +64,4 @@ Este projeto está sob a licença [MIT](LICENSE).
 ---
 
 Desenvolvido com ❤️ por Gilvan Pedro
+
