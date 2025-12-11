@@ -11,7 +11,6 @@ Este portfólio foi criado para demonstrar meus projetos e habilidades como dese
 - Design responsivo que funciona em dispositivos móveis, tablets e desktops
 - Seção de projetos com visualização em grade
 - Animações suaves para melhor experiência do usuário
-- Tema claro/escuro (se aplicável)
 - Fácil personalização
 
 ## 🛠️ Tecnologias Utilizadas
@@ -62,3 +61,4 @@ Este projeto está sob a licença [MIT](LICENSE).
 ---
 
 Desenvolvido com ❤️ por Gilvan Pedro
+
