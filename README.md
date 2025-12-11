@@ -23,7 +23,7 @@ Este portfólio foi criado para demonstrar meus projetos e habilidades como dese
 
 ```
 Portfolio/
-├── index.html         # Página principal
+├── index.html          # Página principal
 ├── style.css          # Estilos principais
 ├── script.js          # Funcionalidades JavaScript
 ├── reset.css          # Reset de estilos
@@ -64,5 +64,6 @@ Este projeto está sob a licença [MIT](LICENSE).
 ---
 
 Desenvolvido com ❤️ por Gilvan Pedro
+
 
 
