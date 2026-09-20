@@ -10,6 +10,20 @@
         margin-top: 40px;
     }
 
+    .texto-escrito {
+        max-width: 100%;
+    }
+
+    .home-subtitle {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
     .project-content, 
     .project-content.reverse {
         flex-direction: column;
@@ -54,6 +68,11 @@
 
 /* Mobile Styles (up to 767px) */
 @media (max-width: 767px) {
+    [nav-header] {
+        padding-left: 65px;
+        min-height: 50px;
+    }
+
     /* Hamburger Menu */
     .nav-menu {
         position: fixed;
@@ -210,6 +229,20 @@
     .btn {
         margin: 5px;
         display: inline-block;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-cta .btn,
+    .hero-cta .btn-outline {
+        text-align: center;
+    }
+
+    .group-title {
+        font-size: 1.1rem;
     }
 
     .contact-form .form-group {

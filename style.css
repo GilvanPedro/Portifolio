@@ -3,6 +3,36 @@
     --bg-color-02: #d6d6d6;
     --txt-color-01: #ffffff;
     --txt-color-02: #8b54c6;
+
+    /* Aliases used by the contact section; keeps every color on one system. */
+    --primary-color: var(--txt-color-02);
+    --text-color: var(--txt-color-01);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --bg-color: var(--bg-color-01);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--txt-color-02);
+    outline-offset: 2px;
 }
 
 @keyframes blink {
@@ -40,6 +70,36 @@ body {
 
 p {
     color: var(--txt-color-02);
+}
+
+header {
+    background-color: var(--bg-color-02);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.12);
+}
+
+[nav-header] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--bg-color-01);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.brand span {
+    color: var(--txt-color-02);
+}
+
+.hamburger {
+    display: none;
 }
 
 .nav-menu {
@@ -103,6 +163,105 @@ p {
     width: 100px;
     height: 4px;
     background-color: var(--txt-color-02);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--bg-color-02);
+    opacity: 0.75;
+    max-width: 60ch;
+    margin: -30px auto 20px;
+    font-size: 1.05rem;
+}
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+.filter-tag {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--bg-color-02);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 7px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-tag:hover {
+    border-color: var(--txt-color-02);
+    color: white;
+}
+
+.filter-tag.active {
+    background: var(--txt-color-02);
+    border-color: var(--txt-color-02);
+    color: white;
+}
+
+.filter-tag.filter-clear {
+    border-style: dashed;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+.group-title {
+    color: var(--bg-color-02);
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    border-left: 3px solid var(--txt-color-02);
+    padding-left: 12px;
+}
+
+.project-group {
+    margin-bottom: 60px;
+}
+
+.featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--txt-color-02);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bg-color-02);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
 }
 
 .project {
@@ -189,8 +348,64 @@ p {
     padding: 2rem;
     font-size: 2.5rem;
     line-height: 1.4;
-    color: #333;
+    color: var(--bg-color-01);
     font-weight: 700;
+}
+
+/* Reserves room for two lines at this element's own font-size, in em, so
+   it scales with every breakpoint automatically. This is what keeps the
+   subtitle and buttons below from jumping up and down as the typewriter
+   effect types and deletes text of different lengths. */
+#typewriter {
+    display: block;
+    min-height: 2.8em;
+}
+
+.home-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--bg-color-01);
+    opacity: 0.75;
+    margin-top: 0.5rem;
+    max-width: 42ch;
+}
+
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+/* These reset font-size and font-weight explicitly: without it, both
+   buttons would inherit .texto-escrito's 2.5rem/700 and render huge. */
+.hero-cta a {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background-color: var(--txt-color-02);
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--bg-color-01);
+    border: 2px solid var(--bg-color-01);
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--bg-color-01);
+    color: white;
+    transform: translateY(-3px);
 }
 
 .img-perfil {
@@ -258,7 +473,7 @@ p {
     content: '';
     position: absolute;
     width: 4px;
-    background-color: #00bcd4;
+    background-color: var(--txt-color-02);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -280,7 +495,7 @@ p {
     width: 20px;
     height: 20px;
     right: -10px;
-    background-color: #00bcd4;
+    background-color: var(--txt-color-02);
     border: 3px solid #fff;
     top: 30px;
     border-radius: 50%;
@@ -378,6 +593,16 @@ p {
     margin: 0;
     color: var(--text-secondary);
     font-size: 0.95rem;
+}
+
+.info-content p a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.info-content p a:hover {
+    color: var(--txt-color-02);
+    text-decoration: underline;
 }
 
 .contact-form {
