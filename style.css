@@ -1394,28 +1394,118 @@ a.info-item:hover {
     display: none;
 }
 
-.featured.is-scrolly .project-image {
-    max-height: calc(100vh - var(--header-h) - 120px);
+/* Balanced two-column layout: text always on the left (no alternating,
+   since the projects swap in place), screenshot on the right inside a
+   fixed-shape window frame so tall images can't take over the screen. */
+.featured.is-scrolly .scrolly-stage > .project,
+.featured.is-scrolly .scrolly-stage > .project:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(36px, 5vw, 80px);
+}
+
+.featured.is-scrolly .scrolly-stage > .project .project-body {
+    order: 1;
+    position: relative;
+    padding: 0;
+}
+
+.featured.is-scrolly .scrolly-stage > .project .project-image {
+    order: 2;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    max-height: calc(100vh - var(--header-h) - 170px);
+    padding-top: 34px;
+    background: var(--dark-900);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius);
-    clip-path: inset(0 0 100% 0 round var(--radius));
-    transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        0 0 90px rgba(139, 84, 198, 0.18);
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+/* Browser-style title bar with three dots */
+.featured.is-scrolly .project-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 34px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(circle at 18px 50%, #ff5f57 5px, transparent 5.5px),
+        radial-gradient(circle at 36px 50%, #febc2e 5px, transparent 5.5px),
+        radial-gradient(circle at 54px 50%, var(--purple-glow) 5px, transparent 5.5px),
+        var(--dark-800);
 }
 
 .featured.is-scrolly .project.is-before .project-image {
-    clip-path: inset(100% 0 0 0 round var(--radius));
+    transform: translateY(-40px) scale(0.96);
 }
 
 .featured.is-scrolly .project.is-current .project-image {
-    clip-path: inset(0 0 0 0 round var(--radius));
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* The screenshot itself wipes in inside the frame */
 .featured.is-scrolly .project-image img {
-    transform: scale(1.15);
-    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.12);
+    transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.18, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featured.is-scrolly .project.is-before .project-image img {
+    clip-path: inset(100% 0 0 0);
 }
 
 .featured.is-scrolly .project.is-current .project-image img {
+    clip-path: inset(0 0 0 0);
     transform: scale(1);
+    transition-delay: 0.15s;
+}
+
+/* Bigger, more readable text column */
+.featured.is-scrolly .project-body h4 {
+    font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+}
+
+.featured.is-scrolly .project-body p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    max-width: 46ch;
+    margin-bottom: 24px;
+}
+
+.featured.is-scrolly .tags {
+    margin-bottom: 28px;
+}
+
+.featured.is-scrolly .tag {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+}
+
+.featured.is-scrolly .project-links {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.featured.is-scrolly .link-btn {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+    border-radius: 999px;
 }
 
 .featured.is-scrolly .project-body > * {
@@ -1440,22 +1530,27 @@ a.info-item:hover {
 .featured.is-scrolly .project.is-current .project-body > :nth-child(4) { transition-delay: 0.36s; }
 .featured.is-scrolly .project.is-current .project-body > :nth-child(5) { transition-delay: 0.43s; }
 
-/* Big step number behind the text */
-.featured.is-scrolly .project-body {
-    position: relative;
-}
-
+/* Outlined step number above the badge */
 .featured.is-scrolly .project-body::before {
     content: attr(data-step);
-    position: absolute;
-    top: -10px;
-    right: 10px;
+    display: block;
+    margin-bottom: 10px;
     font-family: var(--font-mono);
-    font-size: clamp(5rem, 10vw, 8rem);
+    font-size: clamp(3rem, 5vw, 4.2rem);
     font-weight: 600;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.04);
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(180, 138, 230, 0.55);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
     pointer-events: none;
+}
+
+.featured.is-scrolly .project.is-current .project-body::before {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease 0.08s, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
 }
 
 .featured.is-scrolly .scrolly-nav {
