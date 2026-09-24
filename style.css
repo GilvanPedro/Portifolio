@@ -43,8 +43,10 @@
         scroll-behavior: auto !important;
     }
 
-    .reveal {
+    .reveal,
+    .skill {
         opacity: 1 !important;
+        filter: none !important;
         transform: none !important;
     }
 }
@@ -1185,27 +1187,335 @@ a.info-item:hover {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ================= REVEAL ================= */
-.reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+/* ================= SCROLL PROGRESS ================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--purple-glow));
+    transform: scaleX(var(--progress, 0));
+    transform-origin: left center;
+    pointer-events: none;
 }
 
-.reveal.active {
+/* ================= HERO PARALLAX ================= */
+.hero::before {
+    transform: translate3d(0, calc(var(--hero-y, 0) * 0.35px), 0);
+}
+
+.hero-text,
+.hero-visual {
+    will-change: transform;
+}
+
+/* ================= REVEAL ================= */
+/* Everything below only hides content when JS is running (html.js), so the
+   page is still fully readable if the script fails to load. */
+.js .reveal {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(36px);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s ease;
+    transition-delay: var(--reveal-delay, 0s);
+}
+
+.js .reveal[data-reveal="left"] {
+    transform: translateX(-48px);
+}
+
+.js .reveal[data-reveal="right"] {
+    transform: translateX(48px);
+}
+
+.js .reveal[data-reveal="zoom"] {
+    transform: scale(0.92);
+}
+
+.js .reveal.active {
     opacity: 1;
+    filter: none;
     transform: none;
 }
 
-/* Project cards reuse transform for hover, so only fade them in once visible */
-.project.reveal.active {
-    transition: opacity 0.7s ease, transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+/* Project cards reuse transform for hover (tilt), so after the reveal the
+   transform transition gets short again. */
+.js .project.reveal.active {
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    transition-delay: var(--reveal-delay, 0s);
 }
 
 .project.reveal.active:hover {
-    transform: translateY(-6px);
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
 }
 
 .skill-group.reveal.active:hover {
     transform: translateY(-4px);
+}
+
+/* Skill tags pop in one after another when their card is revealed */
+.js .skill-group .skill {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--i, 0) * 70ms + 300ms + var(--reveal-delay, 0s));
+}
+
+.js .skill-group.active .skill {
+    opacity: 1;
+    transform: none;
+}
+
+/* Mouse spotlight on cards */
+.project,
+.skill-group {
+    position: relative;
+}
+
+.project::after,
+.skill-group::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 84, 198, 0.16), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project:hover::after,
+.skill-group:hover::after {
+    opacity: 1;
+}
+
+/* ================= TIMELINE FILL ================= */
+.timeline::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--purple);
+    border-radius: 2px;
+    transform: scaleY(var(--fill, 1));
+    transform-origin: top;
+}
+
+.js .timeline::before {
+    background: rgba(139, 84, 198, 0.18);
+}
+
+.js .timeline::after {
+    transform: scaleY(var(--fill, 0));
+}
+
+.timeline-item {
+    z-index: 1;
+}
+
+.timeline-item::before {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.js .timeline-item.passed::before {
+    background: var(--purple);
+    transform: scale(1.1);
+}
+
+/* ================= FEATURED SCROLLYTELLING ================= */
+/* Fallback (mobile, small screens, reduced motion): a plain list of cards. */
+.project-group.featured {
+    display: block;
+}
+
+.scrolly-stage {
+    display: grid;
+    gap: 24px;
+}
+
+.scrolly-nav {
+    display: none;
+}
+
+/* Pinned mode, enabled by script.js on large screens: the block sticks to
+   the viewport while its (JS-set) height is scrolled through, and each step
+   swaps the visible project instead of moving the page. */
+.featured.is-scrolly {
+    position: relative;
+}
+
+.featured.is-scrolly .scrolly-sticky {
+    position: sticky;
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    padding: 16px 0;
+}
+
+.featured.is-scrolly .scrolly-stage {
+    gap: 0;
+}
+
+.featured.is-scrolly .scrolly-stage > .project {
+    grid-area: 1 / 1;
+    opacity: 1;
+    filter: none;
+    visibility: hidden;
+    pointer-events: none;
+    transform: none;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transition: visibility 0s linear 0.7s;
+}
+
+.featured.is-scrolly .scrolly-stage > .project.is-current {
+    visibility: visible;
+    pointer-events: auto;
+    transition: visibility 0s;
+}
+
+.featured.is-scrolly .scrolly-stage > .project::after {
+    display: none;
+}
+
+.featured.is-scrolly .project-image {
+    max-height: calc(100vh - var(--header-h) - 120px);
+    border-radius: var(--radius);
+    clip-path: inset(0 0 100% 0 round var(--radius));
+    transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.featured.is-scrolly .project.is-before .project-image {
+    clip-path: inset(100% 0 0 0 round var(--radius));
+}
+
+.featured.is-scrolly .project.is-current .project-image {
+    clip-path: inset(0 0 0 0 round var(--radius));
+}
+
+.featured.is-scrolly .project-image img {
+    transform: scale(1.15);
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featured.is-scrolly .project.is-current .project-image img {
+    transform: scale(1);
+}
+
+.featured.is-scrolly .project-body > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.featured.is-scrolly .project.is-before .project-body > * {
+    transform: translateY(-30px);
+}
+
+.featured.is-scrolly .project.is-current .project-body > * {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featured.is-scrolly .project.is-current .project-body > :nth-child(1) { transition-delay: 0.15s; }
+.featured.is-scrolly .project.is-current .project-body > :nth-child(2) { transition-delay: 0.22s; }
+.featured.is-scrolly .project.is-current .project-body > :nth-child(3) { transition-delay: 0.29s; }
+.featured.is-scrolly .project.is-current .project-body > :nth-child(4) { transition-delay: 0.36s; }
+.featured.is-scrolly .project.is-current .project-body > :nth-child(5) { transition-delay: 0.43s; }
+
+/* Big step number behind the text */
+.featured.is-scrolly .project-body {
+    position: relative;
+}
+
+.featured.is-scrolly .project-body::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-family: var(--font-mono);
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.featured.is-scrolly .scrolly-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted-on-dark);
+}
+
+.scrolly-counter .scrolly-current {
+    color: #fff;
+    font-weight: 600;
+}
+
+.scrolly-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scrolly-dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.4s ease, background-color 0.3s ease;
+}
+
+.scrolly-dot.is-current {
+    width: 48px;
+}
+
+.scrolly-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--purple);
+    transform: scaleX(var(--step, 0));
+    transform-origin: left;
+}
+
+.scrolly-dot.is-done {
+    background: var(--purple);
+}
+
+.scrolly-hint i {
+    margin-right: 6px;
+    animation: nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes nudge {
+    50% {
+        transform: translateY(4px);
+    }
 }
