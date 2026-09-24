@@ -11,7 +11,10 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="./img/perfil.png">
     <link rel="icon" href="./img/perfil.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
@@ -19,383 +22,485 @@
 </head>
 
 <body>
-    <header>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <section nav-header>
-            <a class="brand" href="./index.html">Gilvan<span>.dev</span></a>
-            <nav class="nav-menu">
-                <a class="menu-item" href="./index.html">
-                    <div>Home</div>
-                </a>
-                <a class="menu-item" href="#projects">
-                    <div>Projects</div>
-                </a>
-                <a class="menu-item" href="#about">
-                    <div>About</div>
-                </a>
-                <a class="menu-item" href="#contact">
-                    <div>Contact</div>
-                </a>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#home">Gilvan<span>.dev</span></a>
+
+            <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+                <a class="menu-item" href="#home">Home</a>
+                <a class="menu-item" href="#skills">Skills</a>
+                <a class="menu-item" href="#projects">Projects</a>
+                <a class="menu-item" href="#about">About</a>
+                <a class="menu-item nav-cta" href="#contact">Contact</a>
             </nav>
-        </section>
+        </div>
     </header>
-    <section class="home" id="home">
-        <div class="texto-escrito">
-            <h1 id="typewriter" aria-live="polite"></h1>
-            <p class="home-subtitle">Software Engineering student building backend systems, desktop applications and data-driven tools.</p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">See my projects</a>
-                <a href="#contact" class="btn btn-outline">Get in touch</a>
+
+    <main id="main">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="status-pill"><span class="status-dot"></span> Software Engineering Intern @ Saneago</span>
+
+                    <h1 class="hero-name">Hi, I'm <span class="accent">Gilvan Pedro</span></h1>
+
+                    <p class="hero-role">
+                        <span class="mono">&gt;</span>
+                        <span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true"></span>
+                    </p>
+
+                    <p class="hero-subtitle">Software Engineering student at SENAI FATESG, building backend systems, desktop applications and data-driven tools with Java and Spring Boot.</p>
+
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">See my projects <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-outline">Get in touch</a>
+                    </div>
+
+                    <ul class="hero-meta">
+                        <li><i class="fas fa-location-dot"></i> Goiânia, GO - Brasil</li>
+                        <li><i class="fas fa-graduation-cap"></i> SENAI FATESG</li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://github.com/GilvanPedro" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/gilvannp" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:gilvanpedro2006@gmail.com" aria-label="Send an email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <img src="./img/perfil.png" alt="Illustration of Gilvan Pedro programming at a desk" width="622" height="567">
+                    </div>
+                    <div class="floating-chip chip-top"><i class="fab fa-java"></i> Java</div>
+                    <div class="floating-chip chip-bottom"><i class="fas fa-leaf"></i> Spring Boot</div>
+                </div>
             </div>
-        </div>
-        <div class="img-perfil">
-            <img src="./img/perfil.png" alt="Gilvan Pedro, software developer" width="420" height="420">
-        </div>
 
-    </section>
+            <div class="container">
+                <dl class="stats">
+                    <div class="stat">
+                        <dt>Projects</dt>
+                        <dd>11+</dd>
+                    </div>
+                    <div class="stat">
+                        <dt>Main stack</dt>
+                        <dd>Java</dd>
+                    </div>
+                    <div class="stat">
+                        <dt>Focus</dt>
+                        <dd>Backend</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
 
-    <section class="portifolio" id="projects">
-        <h2 class="section-title">My Projects</h2>
-        <p class="section-subtitle">A selection of systems and applications, from full backend projects to smaller studies of specific concepts.</p>
+        <!-- ============ SKILLS ============ -->
+        <section class="section skills" id="skills">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Tech stack</span>
+                    <h2 class="section-title">Languages &amp; Tools</h2>
+                    <p class="section-subtitle">Technologies I use to build my projects.</p>
+                </div>
 
-        <div id="project-filters" class="project-filters" role="group" aria-label="Filter projects by technology"></div>
+                <div class="skills-grid">
+                    <div class="skill-group reveal">
+                        <h3><i class="fas fa-code"></i> Languages</h3>
+                        <ul class="skill-list">
+                            <li class="skill">Java</li>
+                            <li class="skill">JavaScript</li>
+                            <li class="skill">HTML5</li>
+                            <li class="skill">CSS3</li>
+                            <li class="skill">SQL</li>
+                        </ul>
+                    </div>
 
-        <h3 class="group-title">Featured Systems</h3>
-        <div class="project-group featured">
+                    <div class="skill-group reveal">
+                        <h3><i class="fas fa-layer-group"></i> Frameworks &amp; Libraries</h3>
+                        <ul class="skill-list">
+                            <li class="skill">Spring Boot</li>
+                            <li class="skill">Java Swing</li>
+                            <li class="skill">REST APIs</li>
+                        </ul>
+                    </div>
 
-            <div class="project">
-                <div class="project-content reverse">
-                    <div class="project-text reveal left">
-                        <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-                        <h3>POS Gas Station</h3>
-                        <p>Spring Boot backend application for managing products, prices, inventory, movements, and people at a gas station point of sale.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">REST API</span>
-                            <span class="tag">Relational DB</span>
+                    <div class="skill-group reveal">
+                        <h3><i class="fas fa-screwdriver-wrench"></i> Tools</h3>
+                        <ul class="skill-list">
+                            <li class="skill">Git</li>
+                            <li class="skill">GitHub</li>
+                            <li class="skill">Maven</li>
+                            <li class="skill">IntelliJ IDEA</li>
+                            <li class="skill">Relational Databases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Portfolio</span>
+                    <h2 class="section-title">My Projects</h2>
+                    <p class="section-subtitle">A selection of systems and applications, from full backend projects to smaller studies of specific concepts.</p>
+                </div>
+
+                <div id="project-filters" class="project-filters" role="group" aria-label="Filter projects by technology"></div>
+
+                <h3 class="group-title">Featured Systems</h3>
+                <div class="project-group featured">
+
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/projeto6.png" alt="Screenshot of the POS Gas Station Spring Boot application" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://www.canva.com/design/DAG2MXTxAKo/67RKk-wtFZ47KYlvT-rlQA/view?utm_content=DAG2MXTxAKo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcec7327048" class="btn" target="_blank" rel="noopener">Project Images</a>
-                        <a href="https://github.com/GilvanPedro/pdv-posto-de-combustivel" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/projeto6.png" alt="Screenshot of the POS Gas Station Spring Boot application" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-                        <h3>Fleet Management</h3>
-                        <p>Fleet management system developed in Java with a Swing GUI to control vehicles, movements and expense types, including registration, editing and financial transaction tracking.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Swing</span>
-                            <span class="tag">Desktop App</span>
+                        <div class="project-body">
+                            <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
+                            <h4>POS Gas Station</h4>
+                            <p>Spring Boot backend application for managing products, prices, inventory, movements, and people at a gas station point of sale.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Spring Boot</span>
+                                <span class="tag">REST API</span>
+                                <span class="tag">Relational DB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/pdv-posto-de-combustivel" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://www.canva.com/design/DAG2MXTxAKo/67RKk-wtFZ47KYlvT-rlQA/view?utm_content=DAG2MXTxAKo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcec7327048" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-images"></i> Images</a>
+                            </div>
                         </div>
-                        <a href="https://www.canva.com/design/DAHEILUA5Oo/V3uO2P8UdBhdQFv_IkFUkw/edit?utm_content=DAHEILUA5Oo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="btn" target="_blank" rel="noopener">Project Images</a>
-                        <a href="https://github.com/GilvanPedro/Gerenciamento-de-Frotas" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/projeto10.png" alt="Screenshot of the Fleet Management Java Swing application" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
+                    </article>
 
-            <div class="project">
-                <div class="project-content reverse">
-                    <div class="project-text reveal left">
-                        <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-                        <h3>Rural Management System</h3>
-                        <p>Desktop system developed in Java to manage rural properties, covering employees, livestock, crops and finances for day-to-day operational control.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Swing</span>
-                            <span class="tag">Desktop App</span>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/projeto10.png" alt="Screenshot of the Fleet Management Java Swing application" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://www.canva.com/design/DAHEIKOK80E/y6oLqrk_AjBNxV9KhhsYXg/edit?utm_content=DAHEIKOK80E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="btn" target="_blank" rel="noopener">Project Images</a>
-                        <a href="https://github.com/GilvanPedro/Ranch_System" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/projeto11.png" alt="Screenshot of the Rural Management System Java Swing application" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <h3 class="group-title">Console Apps &amp; Fundamentals</h3>
-        <div class="project-group">
-
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <h3>Telegram Bot</h3>
-                        <p>Telegram bot developed in Java using the Maven dependency manager, responding to commands such as the current date and time, motivational quotes, and a dice rolling simulator.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Maven</span>
-                            <span class="tag">Telegram Bot API</span>
+                        <div class="project-body">
+                            <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
+                            <h4>Fleet Management</h4>
+                            <p>Fleet management system developed in Java with a Swing GUI to control vehicles, movements and expense types, including registration, editing and financial transaction tracking.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Swing</span>
+                                <span class="tag">Desktop App</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Gerenciamento-de-Frotas" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://www.canva.com/design/DAHEILUA5Oo/V3uO2P8UdBhdQFv_IkFUkw/edit?utm_content=DAHEILUA5Oo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-images"></i> Images</a>
+                            </div>
                         </div>
-                        <a href="https://github.com/GilvanPedro/BotTelegram" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto7.png" alt="Screenshot of the Telegram Bot project" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
+                    </article>
 
-            <div class="project">
-                <div class="project-content reverse">
-                    <div class="project-text reveal left">
-                        <h3>Anime Search</h3>
-                        <p>Anime search terminal system consuming an external API to fetch and display results.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Console App</span>
-                            <span class="tag">External API</span>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/projeto11.png" alt="Screenshot of the Rural Management System Java Swing application" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://github.com/GilvanPedro/BuscandoAnimes" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/projeto8.png" alt="Screenshot of the Anime Search console application" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <h3>ATM</h3>
-                        <p>Terminal application simulating an ATM, where the user creates an account and can then deposit, transfer and withdraw money.</p>
-                        <div class="tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">OOP</span>
-                            <span class="tag">Console App</span>
+                        <div class="project-body">
+                            <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
+                            <h4>Rural Management System</h4>
+                            <p>Desktop system developed in Java to manage rural properties, covering employees, livestock, crops and finances for day-to-day operational control.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Swing</span>
+                                <span class="tag">Desktop App</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Ranch_System" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://www.canva.com/design/DAHEIKOK80E/y6oLqrk_AjBNxV9KhhsYXg/edit?utm_content=DAHEIKOK80E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-images"></i> Images</a>
+                            </div>
                         </div>
-                        <a href="https://github.com/GilvanPedro/CaixaEletronico" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/projeto9.png" alt="Screenshot of the ATM console application" loading="lazy" decoding="async">
-                    </div>
+                    </article>
+
                 </div>
-            </div>
 
-        </div>
+                <h3 class="group-title">Console Apps &amp; Fundamentals</h3>
+                <div class="project-group">
 
-        <h3 class="group-title">Web &amp; Study Projects</h3>
-        <div class="project-group">
-
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <h3>Vtuber Search</h3>
-                        <p>A collection of web pages dedicated to different VTubers, with information, images and custom styles for each character.</p>
-                        <div class="tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Static Site</span>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto7.png" alt="Screenshot of the Telegram Bot project" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://gilvanpedro.github.io/Vtuber/" class="btn" target="_blank" rel="noopener">Project</a>
-                        <a href="https://github.com/GilvanPedro/Vtuber" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto1.png" alt="Screenshot of the Vtuber Search site" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-content reverse">
-                    <div class="project-text reveal left">
-                        <h3>Cerraive Glow</h3>
-                        <p>Website created for a school project, simulating an online store advertising a product that never came to fruition.</p>
-                        <div class="tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">E-commerce UI</span>
+                        <div class="project-body">
+                            <h4>Telegram Bot</h4>
+                            <p>Telegram bot developed in Java using the Maven dependency manager, responding to commands such as the current date and time, motivational quotes, and a dice rolling simulator.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Maven</span>
+                                <span class="tag">Telegram Bot API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/BotTelegram" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            </div>
                         </div>
-                        <a href="https://gilvanpedro.github.io/Cerraive-Glow/" class="btn" target="_blank" rel="noopener">Project</a>
-                        <a href="https://github.com/GilvanPedro/Cerraive-Glow" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto3.png" alt="Screenshot of the Cerraive Glow online store simulation" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
+                    </article>
 
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <h3>Resort Limbrave</h3>
-                        <p>School project that aimed to create a fictitious company and, in some way, help against the floods in Rio Grande do Sul.</p>
-                        <div class="tags">
-                            <span class="tag">HTML/CSS</span>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/projeto8.png" alt="Screenshot of the Anime Search console application" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://gilvanpedro.github.io/Gramatica_trabalho/" class="btn" target="_blank" rel="noopener">Project</a>
-                        <a href="https://github.com/GilvanPedro/Gramatica_trabalho" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto4.png" alt="Screenshot of the Resort Limbrave site" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-content reverse">
-                    <div class="project-text reveal left">
-                        <h3>Sword Art Online - Project</h3>
-                        <p>My first responsive website, built to promote an upcoming film.</p>
-                        <div class="tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Responsive</span>
+                        <div class="project-body">
+                            <h4>Anime Search</h4>
+                            <p>Anime search terminal system consuming an external API to fetch and display results.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Console App</span>
+                                <span class="tag">External API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/BuscandoAnimes" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            </div>
                         </div>
-                        <a href="https://gilvanpedro.github.io/projeto-sao/" class="btn" target="_blank" rel="noopener">Project</a>
-                        <a href="https://github.com/GilvanPedro/projeto-sao" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto5.png" alt="Screenshot of the Sword Art Online promotional site" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
+                    </article>
 
-            <div class="project">
-                <div class="project-content">
-                    <div class="project-text reveal left">
-                        <h3>Nyhzumi</h3>
-                        <p>A fan site dedicated to VTuber Nyhzumi, built to centralize information, social media and related content, with a focus on responsiveness.</p>
-                        <div class="tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Responsive</span>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/projeto9.png" alt="Screenshot of the ATM console application" loading="lazy" decoding="async">
                         </div>
-                        <a href="https://gilvanpedro.github.io/Nyhzumi/" class="btn" target="_blank" rel="noopener">Project</a>
-                        <a href="https://github.com/GilvanPedro/Nyhzumi" class="btn" target="_blank" rel="noopener">Code</a>
-                    </div>
-                    <div class="project-image reveal right">
-                        <img src="./img/Projeto2.png" alt="Screenshot of the Nyhzumi fan site" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </div>
+                        <div class="project-body">
+                            <h4>ATM</h4>
+                            <p>Terminal application simulating an ATM, where the user creates an account and can then deposit, transfer and withdraw money.</p>
+                            <div class="tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">Console App</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/CaixaEletronico" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </article>
 
-        </div>
+                </div>
 
-    </section>
+                <h3 class="group-title">Web &amp; Study Projects</h3>
+                <div class="project-group">
 
-    <section class="about" id="about">
-        <h2 style="text-align:center" class="section-title">My Trajectory</h2>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto1.png" alt="Screenshot of the Vtuber Search site" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-body">
+                            <h4>Vtuber Search</h4>
+                            <p>A collection of web pages dedicated to different VTubers, with information, images and custom styles for each character.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">Static Site</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Vtuber" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://gilvanpedro.github.io/Vtuber/" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+                            </div>
+                        </div>
+                    </article>
 
-        <div class="timeline">
-            <div class="container left-tml reveal left">
-                <div class="content">
-                    <h3>2013 - 2021</h3>
-                    <p>Elementary School - Colégio Simetria</p>
-                </div>
-            </div>
-            <div class="container right-tml reveal right">
-                <div class="content">
-                    <h3>2022 - 2024</h3>
-                    <p>High School - Colégio Simetria</p>
-                </div>
-            </div>
-            <div class="container left-tml reveal left">
-                <div class="content">
-                    <h3>2025 - 2028</h3>
-                    <p>Faculty of Software Engineering - SENAI FATESG</p>
-                </div>
-            </div>
-            <div class="container right-tml reveal right">
-                <div class="content">
-                    <h3>2026 - Present</h3>
-                    <p>Internship - Saneago</p>
-                </div>
-            </div>
-        </div>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto3.png" alt="Screenshot of the Cerraive Glow online store simulation" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-body">
+                            <h4>Cerraive Glow</h4>
+                            <p>Website created for a school project, simulating an online store advertising a product that never came to fruition.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">E-commerce UI</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Cerraive-Glow" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://gilvanpedro.github.io/Cerraive-Glow/" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+                            </div>
+                        </div>
+                    </article>
 
-        <div class="about-content">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-info">
-                <img src="./img/perfil2.png" alt="Gilvan Pedro" loading="lazy" decoding="async">
-                <p>Hi! I'm <span class="span1">Gilvan Pedro</span>, a software engineer with a passion for creating
-                    innovative and user-friendly applications. I have a strong foundation in programming and a
-                    commitment to delivering high-quality results. Let's connect and explore the possibilities together!
-                </p>
-            </div>
-        </div>
-    </section>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto4.png" alt="Screenshot of the Resort Limbrave site" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-body">
+                            <h4>Resort Limbrave</h4>
+                            <p>School project that aimed to create a fictitious company and, in some way, help against the floods in Rio Grande do Sul.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Gramatica_trabalho" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://gilvanpedro.github.io/Gramatica_trabalho/" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+                            </div>
+                        </div>
+                    </article>
 
-    <section class="contact" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email</h3>
-                        <p><a href="mailto:gilvanpedro2006@gmail.com">gilvanpedro2006@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Phone</h3>
-                        <p><a href="tel:+5562999574422">+55 (62) 99957-4422</a></p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Localization</h3>
-                        <p>Goiânia, GO - Brasil</p>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-form">
-                <form action="https://formspree.io/f/xwpqdabd" method="POST" class="form">
-                    <div class="form-group">
-                        <input type="text" name="nome" id="name" required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="assunto" id="subject" required>
-                        <label for="subject">Subject</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="mensagem" id="message" rows="5" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto5.png" alt="Screenshot of the Sword Art Online promotional site" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-body">
+                            <h4>Sword Art Online - Project</h4>
+                            <p>My first responsive website, built to promote an upcoming film.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/projeto-sao" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://gilvanpedro.github.io/projeto-sao/" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+                            </div>
+                        </div>
+                    </article>
 
-    <footer>
-        <div class="">
-            <p>Copyright &copy; 2025 by &lt;Gilvan Pedro&gt;. All rights reserved.</p>
-        </div>
-        <div class="contact-icon">
-            <a href="https://github.com/GilvanPedro" target="_blank" rel="noopener" aria-label="GitHub profile"><img src="./img/github.png" alt="GitHub"></a>
-            <a href="https://www.linkedin.com/in/gilvannp" target="_blank" rel="noopener" aria-label="LinkedIn profile"><img src="./img/linkedin.png" alt="LinkedIn"></a>
+                    <article class="project reveal">
+                        <div class="project-image">
+                            <img src="./img/Projeto2.png" alt="Screenshot of the Nyhzumi fan site" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-body">
+                            <h4>Nyhzumi</h4>
+                            <p>A fan site dedicated to VTuber Nyhzumi, built to centralize information, social media and related content, with a focus on responsiveness.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/GilvanPedro/Nyhzumi" class="link-btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://gilvanpedro.github.io/Nyhzumi/" class="link-btn" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section class="section about" id="about">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Who I am</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card reveal">
+                        <img src="./img/perfil2.png" alt="Illustration of Gilvan Pedro relaxing at a desk" loading="lazy" decoding="async" width="567" height="567">
+                        <p>Hi! I'm <strong class="accent">Gilvan Pedro</strong>, a software engineer with a passion for creating
+                            innovative and user-friendly applications. I have a strong foundation in programming and a
+                            commitment to delivering high-quality results. Let's connect and explore the possibilities together!</p>
+                    </div>
+
+                    <div class="trajectory reveal">
+                        <h3 class="trajectory-title">My Trajectory</h3>
+                        <ol class="timeline">
+                            <li class="timeline-item current">
+                                <span class="timeline-date">2026 - Present</span>
+                                <h4>Internship</h4>
+                                <p>Saneago</p>
+                            </li>
+                            <li class="timeline-item">
+                                <span class="timeline-date">2025 - 2028</span>
+                                <h4>Software Engineering</h4>
+                                <p>SENAI FATESG</p>
+                            </li>
+                            <li class="timeline-item">
+                                <span class="timeline-date">2022 - 2024</span>
+                                <h4>High School</h4>
+                                <p>Colégio Simetria</p>
+                            </li>
+                            <li class="timeline-item">
+                                <span class="timeline-date">2013 - 2021</span>
+                                <h4>Elementary School</h4>
+                                <p>Colégio Simetria</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Contact</span>
+                    <h2 class="section-title">Let's work together</h2>
+                    <p class="section-subtitle">Have a project, an opportunity or just want to say hi? Send me a message.</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <a class="info-item" href="mailto:gilvanpedro2006@gmail.com">
+                            <span class="info-icon"><i class="fas fa-envelope"></i></span>
+                            <span class="info-content">
+                                <span class="info-label">Email</span>
+                                <span class="info-value">gilvanpedro2006@gmail.com</span>
+                            </span>
+                        </a>
+                        <a class="info-item" href="tel:+5562999574422">
+                            <span class="info-icon"><i class="fas fa-phone"></i></span>
+                            <span class="info-content">
+                                <span class="info-label">Phone</span>
+                                <span class="info-value">+55 (62) 99957-4422</span>
+                            </span>
+                        </a>
+                        <div class="info-item">
+                            <span class="info-icon"><i class="fas fa-location-dot"></i></span>
+                            <span class="info-content">
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Goiânia, GO - Brasil</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form action="https://formspree.io/f/xwpqdabd" method="POST" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" name="nome" id="name" placeholder=" " required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" placeholder=" " required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="assunto" id="subject" placeholder=" " required>
+                                <label for="subject">Subject</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="mensagem" id="message" rows="5" placeholder=" " required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year">2025</span> Gilvan Pedro. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/GilvanPedro" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/gilvannp" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </div>
     </footer>
+
     <script src="./script.js"></script>
 </body>
 

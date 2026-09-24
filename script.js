@@ -1,111 +1,98 @@
-const texts = ["Hi! Welcome to my portifolio ",
-                "I'm Gilvan Pedro", 
-                "This is my site! "];
+// --- Typewriter (hero role line) ---
+const texts = [
+    "Backend Developer",
+    "Java & Spring Boot",
+    "Software Engineering Student",
+    "Desktop & Web Apps"
+];
+const typewriterEl = document.getElementById("typewriter");
 let count = 0;
 let index = 0;
-let currentText = "";
-let letter = "";
 let isDeleting = false;
 
-// The CSS min-height on #typewriter is a fallback guess (2 lines). This
-// measures the real rendered height of each rotating phrase at the current
-// viewport width and locks in the tallest one, so the subtitle and buttons
-// below never jump while the text types or deletes.
-const typewriterEl = document.getElementById("typewriter");
-
-function lockTypewriterHeight() {
-    if (!typewriterEl) return;
-    const currentText = typewriterEl.textContent;
-    typewriterEl.style.minHeight = "0";
-    let tallest = 0;
-    texts.forEach(text => {
-        typewriterEl.textContent = text;
-        tallest = Math.max(tallest, typewriterEl.offsetHeight);
-    });
-    typewriterEl.textContent = currentText;
-    typewriterEl.style.minHeight = tallest + "px";
-}
-
-lockTypewriterHeight();
-window.addEventListener("resize", lockTypewriterHeight);
-
 function type() {
-    currentText = texts[count];
+    const currentText = texts[count];
+    index += isDeleting ? -1 : 1;
+    typewriterEl.textContent = currentText.slice(0, index);
 
-    if (!isDeleting) {
-        letter = currentText.slice(0, ++index);
-    } else {
-        letter = currentText.slice(0, --index);
-    }
+    let speed = isDeleting ? 45 : 90;
 
-    document.getElementById("typewriter").textContent = letter;
-
-    let speed = 100;
-
-    if (isDeleting) {
-        speed /= 2; // apaga mais rápido
-    }
-
-    if (!isDeleting && letter.length === currentText.length) {
+    if (!isDeleting && index === currentText.length) {
         isDeleting = true;
-        speed = 1500; // pausa antes de apagar
-    } else if (isDeleting && letter.length === 0) {
+        speed = 1600; // pausa antes de apagar
+    } else if (isDeleting && index === 0) {
         isDeleting = false;
-        count++;
-        if (count === texts.length) {
-            count = 0; // reinicia loop
-        }
-        speed = 500;
+        count = (count + 1) % texts.length;
+        speed = 400;
     }
 
     setTimeout(type, speed);
 }
 
-type();
+if (typewriterEl) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        typewriterEl.textContent = texts[0];
+    } else {
+        type();
+    }
+}
 
+// --- Mobile menu ---
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
+function setMenu(open) {
+    hamburger.classList.toggle('active', open);
+    navMenu.classList.toggle('active', open);
+    document.body.classList.toggle('menu-open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+    setMenu(!navMenu.classList.contains('active'));
 });
 
 document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
+    link.addEventListener('click', () => setMenu(false));
 });
 
 window.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-menu') && !e.target.closest('.hamburger')) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+        setMenu(false);
     }
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
 });
 
-// Single scroll-reveal mechanism: IntersectionObserver instead of a
-// "scroll" listener, which used to fire on every pixel of scroll and
-// duplicated this same work.
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px"
-};
+// Close the drawer if the viewport grows back to desktop size while it's open.
+window.matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false);
+});
 
+// --- Header shadow on scroll ---
+const header = document.querySelector('.site-header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// --- Highlight the nav link of the section in view ---
+const navLinks = Array.from(document.querySelectorAll('.menu-item'));
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+    });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+
+// --- Scroll reveal ---
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -113,11 +100,13 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
 
-document.querySelectorAll('.reveal').forEach(element => {
-    observer.observe(element);
-});
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+// --- Footer year ---
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // --- Project tag filter ---
 // Selecting one or more tags shows every project that has at least one of
